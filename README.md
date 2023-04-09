@@ -1,6 +1,6 @@
 # Fiduccia-Mattheyses
 Fiduccia-Mattheyses algorithm
-```
+
 Build:
 ```
 mkdir build && cd build
