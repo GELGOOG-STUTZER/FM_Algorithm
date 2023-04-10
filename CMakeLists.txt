@@ -12,9 +12,12 @@ add_executable(${PROJECT_NAME} src/main.cc ${SRC_FILES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include)
 target_compile_options(${PROJECT_NAME} PRIVATE  -O3)
 
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 set(OUT_DIR ${CMAKE_BINARY_DIR}/bin/)
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${OUT_DIR})
-
 add_subdirectory(src/lib)
-target_link_libraries(${PROJECT_NAME} modified)
-target_link_libraries(${PROJECT_NAME} original)
+target_link_libraries(${PROJECT_NAME} modified -static)
+target_link_libraries(${PROJECT_NAME} original -static)
+add_compile_options(-static-libstdc++)
+add_compile_options(-static-libgcc)
+

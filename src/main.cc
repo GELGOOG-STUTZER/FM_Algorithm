@@ -2,6 +2,7 @@
 #include "AlgorithmMod.h"
 #include "Hypergraph.h"
 #include "Partitions.h"
+#include <chrono>
 
 int main(int argc, char *argv[]) {
     using namespace std::literals;
