@@ -36,7 +36,7 @@ Gain_container::Gain_container(Hypergraph const &HG, Partitions const &Prt) {
             ++VertGain[VRightId];
     }
 
-    for (unsigned i = 1; i != Prt.get_part().size(); ++i) {
+    for (unsigned i = Prt.get_part().size() - 1; i != 0; --i) {
         auto &&Side = get_need_side(Prt.get_part().at(i));
         auto &Item = Side[VertGain[i]];
         Item.push_front(i);
