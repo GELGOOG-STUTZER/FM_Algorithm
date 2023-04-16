@@ -49,8 +49,17 @@ bool Gain_container::is_empty(bool Side) const {
 }
 
 // Creates a pair showing the best possible move of a vertice at the moment
-Gain_container::Move Gain_container::best_feasible_move(bool Side) {
-    auto &SizeToUpd = get_need_side(Side);
+Gain_container::Move Gain_container::best_feasible_move(int Side) {
+    bool IsSideR;
+
+    if (Side == 1) {
+        IsSideR = true;
+    }
+    else if (Side == 0) {
+        IsSideR = false;
+    }
+
+    auto &SizeToUpd = IsSideR ? Right : Left;
 
     auto &&[Gain, Vertices] = *SizeToUpd.rbegin();
     unsigned Vertex = *Vertices.begin();

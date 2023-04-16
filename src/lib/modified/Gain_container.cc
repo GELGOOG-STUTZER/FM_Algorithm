@@ -48,15 +48,17 @@ Gain_container::RLSide &Gain_container::get_need_side(bool Side) {
     return Side ? Right : Left;
 }
 
-bool Gain_container::is_empty() const {
-    return Left.empty() || Right.empty();
+Gain_container::RLSide const &Gain_container::get_need_side(bool Side) const {
+    return Side ? Right : Left;
+}
+
+bool Gain_container::is_empty(bool Side) const {
+    auto const &SizeToUpd = get_need_side(Side);
+    return SizeToUpd.empty();
 }
 
 Gain_container::Move Gain_container::best_feasible_move(int Displacement) {
-
-    const int GainR = Right.rbegin()->first;
-    const int GainL = Left.rbegin()->first;
-    const bool IsSideR = GainL < GainR || Displacement >= 0;
+    const bool IsSideR = Displacement > 0 ? true : false;
 
     auto &SizeToUpd = get_need_side(IsSideR);
 

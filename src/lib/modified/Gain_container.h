@@ -24,10 +24,11 @@ class Gain_container {
     std::vector<std::list<int>::iterator> Iterators;
 
     RLSide &get_need_side(bool Side);
+    RLSide const &get_need_side(bool Side) const;
 
 public:
     Gain_container(Hypergraph const &HG, Partitions const &Prt);
-    bool is_empty() const;
+    bool is_empty(bool Check) const;
     Move best_feasible_move(int Displacement);
     void update(unsigned Vertex, bool Side, int Value);
     void erase(unsigned Vertex, bool Side);

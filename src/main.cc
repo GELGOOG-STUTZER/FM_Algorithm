@@ -22,7 +22,9 @@ int main(int argc, char *argv[]) {
     unsigned const iterations = is_modified ? AlgMod::FM(Graph, Prt) : Alg::FM(Graph, Prt);
     auto const finish = std::chrono::steady_clock::now();
 
-
+    std::cout << input_file << ' ' << Graph.get_edges().size() << ' '
+              << Graph.get_vertices().size() << ' ' << Prt.get_cost() << ' '
+              << (finish - start) / 1ms << ' ' << iterations << '\n';
 
     Prt.out(Output_File);
 

@@ -25,7 +25,7 @@ class Gain_container {
 public:
     Gain_container(Hypergraph const &HG, Partitions const &Prt);
     bool is_empty(bool Check) const;
-    Move best_feasible_move(bool Side);
+    Move best_feasible_move(int Side);
     void update(unsigned Vertex, bool Side, int Value);
     void erase(unsigned Vertex, bool Side);
     void update_deleted(unsigned Vertex);

@@ -30,7 +30,7 @@ int pass(Gain_container &GC, Partitions &Prt, Hypergraph const &HG) {
     int BestCost = Cost;
     std::vector<unsigned> VertToChange;
 
-    while (!GC.is_empty()) {
+    while (!GC.is_empty(Prt.get_side())) {
         auto [Vertex, Gain] = GC.best_feasible_move(Prt.get_side());
         VertToChange.push_back(Vertex);
         Cost -= Gain;
